@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+    int t,n,a[2005],b[2005],i,j,l,k,cnt,max;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        for(i=0;i<n;i++)
+        cin>>a[i];
+        for(i=0;i<n;i++)
+        cin>>b[i];
+        max=0;
+        for(i=0;i<n;i++)
+        {
+            cnt=0;
+            for(j=0;j<n;j++)
+            {
+                if(a[i]==b[j])
+                {
+                    l=i;
+                    k=j;
+                    while(a[l]==b[k])
+                    {
+                        cnt++;
+                        if(k==n-1)
+                        break;
+                        else
+                        k++;
+                        if(l==n-1)
+                        break;
+                        else
+                        l++;
+                        if(cnt==n)
+                        break;
+                    }
+                    if(cnt>max)
+                    max=cnt;
+                    i+=cnt-1;
+                    break;
+                }
+            }
+        }
+        cout<<max<<endl;
+    }
+}
